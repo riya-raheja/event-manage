@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <!-- Additional FullCalendar plugins CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@5.11.3/main.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@5.11.3/main.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">
+                <span>📅</span>
+                <a href="/" class="logo-link">Event Manager</a>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Dashboard</a>
+                <a href="/calendar" class="nav-link">Calendar</a>
+                <a href="/events" class="nav-link">Events</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌓</button>
+                <div class="user-profile">
+                    <span>👤</span>
+                    <span id="username">Guest</span>
+                </div>
+                <a href="#" onclick="handleLogout(event)" class="nav-link">
+                    <span>🚪</span>
+                    Logout
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div id="calendar-container"></div>
+            <div id="event-form-container" class="hidden" style="display: none;">
+                <div class="modal-content">
+                    <div class="event-form-header">
+                        <h2 id="event-form-title">Create New Event</h2>
+                        <button class="close-form" onclick="closeEventForm()">&times;</button>
+                    </div>
+                    <form id="event-form">
+                        <div class="form-group">
+                            <label for="event-title">Title</label>
+                            <input type="text" id="event-title" required minlength="3">
+                        </div>
+                        <div class="form-group">
+                            <label for="event-description">Description</label>
+                            <textarea id="event-description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="event-start">Start Time</label>
+                            <input type="datetime-local" id="event-start" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="event-end">End Time</label>
+                            <input type="datetime-local" id="event-end" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="event-location">Location</label>
+                            <input type="text" id="event-location">
+                        </div>
+                        <div class="form-group">
+                            <label for="event-category">Category</label>
+                            <select id="event-category">
+                                <option value="personal">Personal</option>
+                                <option value="work">Work</option>
+                                <option value="social">Social</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="closeEventForm()">Cancel</button>
+                            <button type="submit" class="btn-primary">Create Event</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <!-- AI Assistant Chat -->
+        <div id="ai-chat" class="hidden">
+            <div class="chat-header">
+                <h3>AI Assistant</h3>
+                <button class="close-chat">×</button>
+            </div>
+            <div class="chat-messages"></div>
+            <div class="chat-input">
+                <input type="text" placeholder="Ask me anything about your events...">
+                <button class="send-message">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- FullCalendar Core and Plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@5.11.3/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@5.11.3/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@5.11.3/main.min.js"></script>
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/app.js"></script>
+</body>
+</html> 
